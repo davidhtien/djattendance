@@ -1,0 +1,9 @@
+from django.conf.urls import patterns, url
+
+from imports import views
+
+urlpatterns = patterns('',
+    url(r'new/$',
+        views.CreatePortion.as_view(),
+        name='new'),
+)
