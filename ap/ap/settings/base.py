@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     'terms',
     # ap modules
     'dailybread',  # daily nourishment
+    'imports', # ftta-app-api imports
 )
 
 # A sample logging configuration. The only tangible logging
