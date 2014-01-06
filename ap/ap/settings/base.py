@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'autofixture',
     'braces',
     'django_reset',
+    'django_nvd3',
     # ap CORE
     'accounts',
     'aputils',
@@ -139,6 +140,8 @@ INSTALLED_APPS = (
     'terms',
     # ap modules
     'dailybread',  # daily nourishment
+    #Allen's module
+    'utilities',
 )
 
 # A sample logging configuration. The only tangible logging

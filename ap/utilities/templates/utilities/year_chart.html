@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Example Page{% endblock %}
+
+{% block content %}
+{% load nvd3_tags %}
+<head>
+    {% include_chart_jscss %}
+    {% load_chart charttype chartdata "linewithfocuschart_container" kw_extra %}
+</head>
+<body>
+    <h1>Chart Title</h1>
+    {% include_container "linewithfocuschart_container" 400 '100%' %}
+    <h1>Query Data</h1>
+    {{ query_data }}
+</body>
+{% endblock %}
