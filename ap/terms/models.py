@@ -1,8 +1,10 @@
-from django.db import models
-from django.core.urlresolvers import reverse
 import datetime
 
-########################################################################80chars
+from django.db import models
+from django.core.urlresolvers import reverse
+from django.db.models import Q
+from django.core.exceptions import ObjectDoesNotExist
+
 
 """ TERM models.py
 
@@ -42,7 +44,13 @@ class Term(models.Model):
     @staticmethod
     def current_term():
         """ Return the current term """
-        return Term.objects.all().filter(start__lte=datetime.date.today()).filter(end__gte=datetime.date.today())
+        try:
+            return Term.objects.get(Q(start__lte=datetime.date.today()), Q(end__gte=datetime.date.today()))
+        # this will happen in cases such as in-between terms (or empty DB, possibly)
+        except ObjectDoesNotExist:
+            # return an obviously fake term object
+            return Term(name="Temp 0000", code="TM00", start=datetime.date.today(), end=datetime.date.today())
+
 
     def getDate(self, week, day):
         """ return an absolute date for a term week/day pair """
